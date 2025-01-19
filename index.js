@@ -1,6 +1,8 @@
 import express from "express";
-
+import cors from "cors";
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 let fruit = [];
@@ -32,7 +34,7 @@ app.delete("/:id", (req, res) => {
     return res.status(404).send("id not found");
   }
   fruit.splice(itemIndex, 1);
-  return res.status(200).send("Deleted Successfully")
+  return res.status(200).send("Deleted Successfully");
 });
 
 app.get("/", (req, res) => {
